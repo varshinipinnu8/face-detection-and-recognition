@@ -1,3 +1,4 @@
+import streamlit as st
 import cv2
 import numpy as np
 from mtcnn import MTCNN
@@ -8,8 +9,13 @@ from scipy.spatial.distance import cosine
 # Load Models (Loaded only once)
 # ----------------------------------------------------
 
-detector = MTCNN()
-embedder = FaceNet()
+@st.cache_resource
+def load_models():
+    detector = MTCNN()
+    embedder = FaceNet()
+    return detector, embedder
+
+detector, embedder = load_models()
 
 # ----------------------------------------------------
 # Detect Faces
@@ -18,13 +24,15 @@ embedder = FaceNet()
 def detect_faces(image):
     """
     Detect all faces in an image.
-
-    Parameters:
-        image (numpy.ndarray): RGB image
-
-    Returns:
-        list: List of detected faces
     """
+
+    h, w = image.shape[:2]
+    max_size = 800
+
+    if max(h, w) > max_size:
+        scale = max_size / max(h, w)
+        image = cv2.resize(image, (int(w * scale), int(h * scale)))
+
     return detector.detect_faces(image)
 
 
@@ -72,6 +80,14 @@ def extract_face(image, required_size=(160, 160)):
     """
     Extract the first detected face from image.
     """
+
+    # Resize large images for faster detection
+    h, w = image.shape[:2]
+    max_size = 800
+
+    if max(h, w) > max_size:
+        scale = max_size / max(h, w)
+        image = cv2.resize(image, (int(w * scale), int(h * scale)))
 
     faces = detector.detect_faces(image)
 
