@@ -2,10 +2,6 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 
-from utils import (
-    process_detection,
-    verify_faces
-)
 
 # ----------------------------------------------------
 # Page Configuration
@@ -17,6 +13,15 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+
+
+from utils import (
+    process_detection,
+    verify_faces
+)
+
+
 
 # ----------------------------------------------------
 # Sidebar
