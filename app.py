@@ -27,81 +27,34 @@ from utils import (
 # Sidebar
 # ----------------------------------------------------
 
-st.sidebar.title("😊 Face Recognition")
+st.sidebar.title("😊 Face Detection & Recognition")
 
 st.sidebar.markdown("---")
 
-st.sidebar.info(
-"""
-### Technologies
 
-- MTCNN
-- FaceNet
-- TensorFlow
-- OpenCV
-- Streamlit
-"""
-)
 
 page = st.sidebar.radio(
     "Choose Module",
     [
-        "Home",
+      
         "Face Detection",
         "Face Verification"
     ]
 )
 
-st.sidebar.markdown("---")
 
-st.sidebar.success("Developed using Deep Learning")
 
 # ----------------------------------------------------
 # HOME
 # ----------------------------------------------------
 
-if page == "Home":
 
-    st.title("😊 Face Detection & Recognition")
-
-    st.markdown(
-    """
-    ## Welcome
-
-    This project demonstrates an end-to-end facial recognition system using
-
-    ✔ MTCNN for Face Detection
-
-    ✔ FaceNet for Face Embedding
-
-    ✔ Cosine Similarity for Face Verification
-
-    ---
-
-    ### Features
-
-    - Detect Faces
-    - Draw Bounding Boxes
-    - Face Verification
-    - Similarity Score
-    - Euclidean Distance
-    - Modern Interactive UI
-
-    ---
-    """
-    )
-
-    col1,col2,col3=st.columns(3)
-
-    col1.metric("Detection Model","MTCNN")
-    col2.metric("Recognition Model","FaceNet")
-    col3.metric("Similarity","Cosine")
 
 # ----------------------------------------------------
 # FACE DETECTION
 # ----------------------------------------------------
 
-elif page=="Face Detection":
+if page=="Face Detection":
 
     st.title("📷 Face Detection")
 
