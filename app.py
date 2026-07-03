@@ -74,7 +74,7 @@ if page=="Face Detection":
 
         st.image(
             output,
-            use_container_width=True
+            use_column_width=True
         )
 
         st.success(f"Total Faces Detected : {total_faces}")
@@ -117,7 +117,7 @@ elif page=="Face Verification":
             st.image(
                 image1,
                 caption="Reference Image",
-                use_container_width=True
+                use_column_width=True
             )
 
         with c2:
@@ -125,7 +125,7 @@ elif page=="Face Verification":
             st.image(
                 image2,
                 caption="Test Image",
-                use_container_width=True
+                use_column_width=True
             )
 
         st.write("")
