@@ -1,0 +1,10 @@
+streamlit>=1.36.0
+opencv-python
+numpy
+tensorflow
+keras-facenet
+mtcnn
+scipy
+matplotlib
+scikit-image
+pillow
